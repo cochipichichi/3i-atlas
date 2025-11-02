@@ -381,3 +381,24 @@ if (chartCanvas) {
 // cargar medallas previas
 updateBadgesUI(JSON.parse(localStorage.getItem("atlasAwards") || "[]"));
 refreshAdmin();
+
+
+async function fetchObservaciones() {
+  // intenta desde Sheets (producción)
+  if (typeof ATLAS_CONFIG !== "undefined" && ATLAS_CONFIG.MODE === "production" && ATLAS_CONFIG.GSCRIPT_URL) {
+    try {
+      const res = await fetch(ATLAS_CONFIG.GSCRIPT_URL + "?mode=observaciones");
+      if (res.ok) {
+        return await res.json();
+      }
+    } catch (err) {
+      console.warn("No se pudo obtener desde Sheets, usando fallback...", err);
+    }
+  }
+  // fallback a JSON local
+  if (typeof ATLAS_CONFIG !== "undefined" && ATLAS_CONFIG.FALLBACK_JSON) {
+    const res = await fetch(ATLAS_CONFIG.FALLBACK_JSON);
+    return await res.json();
+  }
+  return [];
+}
