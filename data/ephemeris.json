@@ -1,0 +1,6 @@
+[
+  { "fecha": "2025-10-30", "dist_sun": 1.4, "dist_earth": 1.9, "mag": 13.1 },
+  { "fecha": "2025-11-15", "dist_sun": 1.45, "dist_earth": 1.86, "mag": 13.3 },
+  { "fecha": "2025-12-01", "dist_sun": 1.5, "dist_earth": 1.82, "mag": 13.5 },
+  { "fecha": "2025-12-19", "dist_sun": 1.6, "dist_earth": 1.79, "mag": 13.7 }
+]
